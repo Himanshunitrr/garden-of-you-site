@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy — Garden of You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🌿</div>
+      <div>
+        <div class="brand-name">Garden of You</div>
+        <div class="brand-sub">Daily Journal</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="support.html" class="nav-link">Support</a>
+      <button id="themeToggle" class="btn ghost" type="button" aria-label="Toggle theme">☾</button>
+    </nav>
+  </header>
+
+  <main class="wrap page">
+    <h1>Privacy Policy</h1>
+    <p><strong>Garden of You</strong> is designed to be simple and private.</p>
+
+    <div class="card">
+      <h3>What we collect</h3>
+      <ul>
+        <li><strong>No accounts.</strong> We don’t require sign-in.</li>
+        <li><strong>No tracking.</strong> We don’t run third-party analytics or ad trackers.</li>
+        <li><strong>Journal content stays on your device</strong> (and in your personal backups, if enabled).</li>
+      </ul>
+
+      <h3>What we share</h3>
+      <p>We do not sell or share personal data with third parties.</p>
+
+      <h3>Contact</h3>
+      <p>If you have questions, contact us from the Support page.</p>
+
+      <p style="margin-top:14px;"><a class="text-link" href="index.html">← Back to home</a></p>
+    </div>
+  </main>
+
+  <footer class="wrap footer">
+    <div>© <span id="year"></span> Garden of You</div>
+    <div class="footer-links">
+      <a href="support.html">Support</a>
+    </div>
+  </footer>
+
+  <script>
+    // theme + year
+    (() => {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('goy_theme');
+      if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+      const update = () => { btn.textContent = (root.dataset.theme === 'dark') ? '☼' : '☾'; };
+      update();
+      btn.addEventListener('click', () => {
+        root.dataset.theme = (root.dataset.theme === 'dark') ? 'light' : 'dark';
+        localStorage.setItem('goy_theme', root.dataset.theme);
+        update();
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
